@@ -1,0 +1,52 @@
+출처: https://jh-daisy.tistory.com/10
+
+- RNA-Seq 분석 파이프라인
+1. Pre-Analysis [분석 전 단계]: 실험 디자인 및 Sequence Data 생산, Data Quality 확인
+2. Core-Analysis [분석 단계]: 차등발현 유전자 등 유전자의 기능 분석
+3. Advanced-Analysis[분석 후 단계]: 분석 결과에 대한 데이터의 시각화(R 사용?), Non-coding RNA 추가 분석 후 통합 전사체 분석
+
+<RNA-Seq Flow>
+NGS Sequencing -> Preprocessing -> Mapping -> Expression Abundance -> DEG selection -> Funtional Annotation
+
+- RNA-Seq 실험 Design
+1. 전제 조건
+ > 최종 실험의 목적
+ > 어떤 성격(종류)의 실험군
+
+2. Design 고려사항
+ > Genomic Considerations: 샘플의 종 복잡성
+ > Biological Considerations: 조직의 특이성 / 발달 단계 / 트리트먼트 생물학적 고려사항
+ > Economical Considerations: 한정적인 예산
+ > Technical Considerations: Skills, Hardware etc.
+ > Technology Used: Library Preparation, Sequencing Amount, Analysis Pipline
+ > 샘플에 대한 실험 반복(Wet LAB)
+	+ Biological Relicates: 최소 3번의 반복 이상이 포함
+	+ Technical Relicates: 동일 샘플에 대한 다른 라이브러리 준비, 동일 Flow Cell 준비
+ > 라이브러리 구축: Sequencing을 위한 cDNA Library 준비
+	+ RNA isolation: RNA는 조직으로부터 단리되고 DNase와 혼합
+	+ RNA selection/depletion: 원하는 RNA 여과, 신호 분석을 위해 단리된 RNA 유치 후 poly-A tail RNA만을 여과하여 mRNA 보유, rRNA 제거
+	+ cDNA sysyhesis: RNA를 cDNA로 역전사하여 더 안정적인 DNA Sequencing의 기술 활용
+	+ Total RNA = Coding RNA + Non-Coding RNA: 실험 목적에 맞는 RNA Library 구축 필요
+ > Sequencing 서열 길이
+	+ 단일방향(Single-End:SE)/Short SE Read: Transcription이 잘 정립된 생명체의 유전자 발현 분석에 용이/저렴
+	+ 양방향(Paired-End:PE)/Long Read: Transcription이 제대로 정립되지 않은 생명체 분석 시 좋은 결과
+ > Sequencing Depth
+	+ Library Size: 각 Sample's Sequencing read
+	+ 샘플을 더 많이 읽을수록 더 많은 Transcription 발견 및 정량의 정확성
+	+ 최적의 Sequencing Depth는 실험의 목적마다 상이함(= 전사체의 복잡성에 영향)
+	+ 알려진 실험의 경우 Sequencing Depth가 높을수록 정량, 검출에 용이(장점) / Off-Target과 Noise 증가(단점)
+
+- RNA 추출 및 Qaulity Check(QC)
+1. RNA 추출 
+ > RIN: RNA Integrity Number, RNA의 온전함을 나타내는 수치로, 다른 단백질이 섞일수록 값이 낮아짐(0~10)
+2. Library 준비
+ > 목적에 따른 RNA 준비, total RNA / mRNA -> RNA를 cDNA로 역전사
+3. NGS Sequencing
+ > 적합한 NGS 머신 선택
+4. NGS 데이터 생산
+ > FASTQ: Sequence + Quality score Data, 하나의 read는 4줄로 구성
+	+ Identifier: @로 시작하는 헤더, Seqeuncing 정보 보유
+	+ Sequence: 염기서열
+	+ '+' sign: 구분 문자
+	+ Quality Score: 염기 서열의 품질 정보(ASCii 문자) -> ASCii 값을 사용해 Phred Quality Score 체계로 변환 -> P 값을 계산 -> (1-P)*100 = 정확도(%)
+ > Sequencing Data QC
