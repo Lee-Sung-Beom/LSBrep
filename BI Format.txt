@@ -1,5 +1,3 @@
-출처: https://jh-daisy.tistory.com/20?category=995857
-
 1. FASTA
 : txt 기반 포멧, 염기서열 / 단백질 서열을 나타내는 파일
 header와 서열로 이루어진 정보, 서열은 한 줄 당 70~80개
@@ -10,8 +8,8 @@ header와 서열로 이루어진 정보, 서열은 한 줄 당 70~80개
   서열---~~~---
 
 2. FASTAQ
-: txt 기반 포멧, 염기서열 + 해당 퀄리티 점수
-4줄이 하나의 Read
+: txt 기반 포멧, 염기서열 + 해당 퀄리티 점수, NGS를 통해 절편화 된 유전정보를 순서 없이 포함
+4줄이 하나의 Read(50 ~ 200bp)
  #Read: Sequencer가 Sample의 서열을 한 번에 읽은 길이
  - 형식
  : @header(Sequence 정보)
@@ -20,6 +18,7 @@ header와 서열로 이루어진 정보, 서열은 한 줄 당 70~80개
   Sequence Quality
 
 3. SAM/BAM
+: FASTAQ 파일로부터 만들어진 파일로, 순서 없이 저장된 read를 쭉 이어 붙여 염색체 번호화 위치를 부여한 파일
  - SAM: Sequence Alignment Map, txt 기반 포멧, Read의 정렬된 데이터 보유
  - BAM: Binary Alignment Map, SAM 파일의 2진 형식 파일로 좋은 압축률에 의해 SAM보다 작은 파일 크기
  - 형식
@@ -46,11 +45,29 @@ header와 서열로 이루어진 정보, 서열은 한 줄 당 70~80개
 	+ insert의 크기: forward read와 Reverse Read의 간격
 	+ Read 염기서열
 	+ Read 염기서열 Quality 점수(Phred Score)
+ - FASTAQ to BAM
+ > Mapping / Alignment
+	+ FASTAQ to SAM: 인간 표준 유전체를 기준 서열로 사용하여 절편화된 서열의 mapping / Alignment 진행하여 순서대로 배치
+	+ 해당 과정을 통해 SAM 파일이 생성되고, read 별로 유전체에서의 염색체 번호 및 위치 기록
+	+ BWA 알고리즘을 통해 진행
+ > SAM to BAM
+	+ ASCii 코드로 이루어진 SAM 파일을 2진수 형태의 BAM 파일로 변환
+	+ samtool을 사용하여 2진수로 변환
+	+ BAM 파일에서는 절편화 된 read에 mapping된 염색체의 위치에 맞게 정렬을 해주고 인덱스 파일 생성
+ - BAM 파일의 사용
+ : IGV(Integrative Genomics Viewer)를 통해 read의 정렬 형태 및 돌연변이에 대한 형태의 시각화 가능
+ > IGV를 통해 확인한 돌연변이는 해당 변이의 Phred Score를 확인하여 에러인지 variation인지 확인
+ > 변이 검출
 
 4. VCF
 : Variant Calling Format, 생물정보학적 텍스트 파일 포멧
  - 형식
  : ## 으로 시작되는 부분은 메타데이터 영역으로, VCF 파일의 정보 포함, 사용 Tool, 분석 방식의 정보 보유
+ - 생성 방식
+ > 표준 유전체의 각 위치별로 read를 종합 후, 표준 유전체와 같은 염기(Ref base)와 다른 염기(Alt base)의 개수 비교
+ > 변이 검출 시 모든 에러에 대한 배제 이후 진양성 변이 검출(True Positive)
+	+ 사용 프로그램 종류, 내부 파라미터, 데이터 전처리, 결과 필터링 등의 과정에 따라 SAM / BAM 파일에 대해 다른 결과 가능성
+	+ 위양성(False Positive), 위음성(False Negative) 판단 여부 중요
 
 5. BED
 : Browser Extensive Data, 유전체를 구간별로 나누어 구간의 특징을 줒석으로 표기할 수 있는 파일 형식, 각 항목은 탭으로 구분
