@@ -50,5 +50,13 @@ NGS Sequencing -> Preprocessing -> Mapping -> Expression Abundance -> DEG select
  > Sequencing Data QC
 	+ Sequencing Error, PCr Artifact, Contamiantion Check
 	+ Sequence Qulity Check (% Q30 - Phred Scroe)
+		Q10 = 해당 염기의 오류 확률 10%
+		Q20 = 해당 염기의 오류 확률 1%
+		Q30 = 해당 염기의 오류 확률 0.1% -> 양호한 염기의 기준
 	+ GC Content, Adaptor 유무, 지나친 K-mer 유무, Duplicated Read 등 확인
 	+ 허용 범위의 Duplication, K-mer, GC Content 정도느 실험과 생명체에 의해 결정되나, 이 값들은 동일 실험에서 샘플 별로 균일해야 함
+
+- DNA 데이터 분석
+1. DNA 데이터 추출: NGS를 통해 절편화된 read를 순서 없이 FASTAQ 파일로 저장
+2. Mapping: 표준 유전체를 기준으로 read의 정렬 후 BAM / SAM 파일로 저장
+3. 변이 검출: BAM 파일로 저장되어 Align된 read에서 변이 정보를 추출하여 VCF 파일로 저장
