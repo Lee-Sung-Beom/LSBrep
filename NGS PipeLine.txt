@@ -1,5 +1,3 @@
-출처: https://jh-daisy.tistory.com/10
-
 - RNA-Seq 분석 파이프라인
 1. Pre-Analysis [분석 전 단계]: 실험 디자인 및 Sequence Data 생산, Data Quality 확인
 2. Core-Analysis [분석 단계]: 차등발현 유전자 등 유전자의 기능 분석
@@ -50,3 +48,7 @@ NGS Sequencing -> Preprocessing -> Mapping -> Expression Abundance -> DEG select
 	+ '+' sign: 구분 문자
 	+ Quality Score: 염기 서열의 품질 정보(ASCii 문자) -> ASCii 값을 사용해 Phred Quality Score 체계로 변환 -> P 값을 계산 -> (1-P)*100 = 정확도(%)
  > Sequencing Data QC
+	+ Sequencing Error, PCr Artifact, Contamiantion Check
+	+ Sequence Qulity Check (% Q30 - Phred Scroe)
+	+ GC Content, Adaptor 유무, 지나친 K-mer 유무, Duplicated Read 등 확인
+	+ 허용 범위의 Duplication, K-mer, GC Content 정도느 실험과 생명체에 의해 결정되나, 이 값들은 동일 실험에서 샘플 별로 균일해야 함
