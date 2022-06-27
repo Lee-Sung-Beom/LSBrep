@@ -1,0 +1,23 @@
+<Github에서의 Repository 생성>
+1. Repository name: 저장소 이름
+ - 프로젝트가 진행될 때 사용할 수 있으며, 프로젝트명을 사용 -> 해당 이름에 따라 URL 변경
+
+2. Description: 저장소 간단 설명
+
+3. Public / Private: 저장소의 공개 / 비공개 설정
+
+4. Initialize with a README: README 파일 생성 여부
+ - 코드 등의 설명을 README에 기입하여 기록
+ - 저장소의 설명, 설치 방법, 저장소에 기여한 인원 등의 내용 작성
+
+5. Add .gitgnore: 중요한 정보로 git에 올라가면 안되는 파일 지정
+ - Git repo 생성 이후에도 .gitgnore 확장자를 사용해 commit 후 push를 하여도 Github에 업로드 되지 않게 설정 가능
+
+6. Add a license: 라이선스 파일 추가
+ - 공개적인 사용을 위해 오픈소스 코드에 지적 재산권 부여
+ - 사용 가능한 확장자(라이선스 파일 확장자)
+    > MIT
+    > Apache 2.0
+    > GPLv3
+ - https://choosealicense.com/ 에서 프로젝트에 맞는 라이선스의 선택 가능
+ - .gitgnore와 같이 추후의 변경 가능

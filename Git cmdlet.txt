@@ -32,3 +32,9 @@
 # Github Repository에서 Code를 확장하고 주소 복사 후 붙여넣기
 # clone의 주소 입력 후 한칸 띄고 마침표
 # 2개의 Branch가 생겨 우선적으로 업로드 진행
+
+# master repo 연동 방법
+# git init
+# git config --global user.name & --global user.email
+# git remote add origin Github.com/~/~.git
+# git pull origin master

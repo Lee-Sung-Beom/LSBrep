@@ -1,0 +1,18 @@
+# 소스트리 설치
+# 구글에 Sourcetree 검색 - 다운로드
+# 구글 계정으로 사용할 수 있는 Bitbucket 선택
+# 설문조사 skip
+# 소스트리 마법사로 돌아가 뒤로 누르고 다시 Bitbucket 누르고 다음
+# Grant access로 권한 부여 후 설치 마법사에서 진행
+# 버전관리 툴인 Mercurial은 선택 해제
+# SSH 키는 없기 때문에 아니오 누르고 진행
+
+# 소스트리에서 Github 로그인
+# 원격 저장소[Remote] 탭 클릭
+# 계정 이름 바로 밑에 원격 저장소를 Bitbucket에서 Github으로 변경 - 프로필 - 우클릭 - 편집
+# 호스팅 서비스 변경 후 OAuth 토큰 새로 고침
+# 호스팅 서비스가 바뀌지 않는다면 새로운 탭 실행
+
+# Visual Studio Code 설치
+# 구글에서 Visual Studio Code 검색 - 다운로드
+
