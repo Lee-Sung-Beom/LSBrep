@@ -4,6 +4,42 @@
  - 한 명이 코드를 관리한다면, 병렬 형태로 작업이 가능
  - 여러 명이 협업으로 코드의 수정 및 생성을 한다면 병렬 형태에서 가지 치기의 형태
  - 여러 명이 하나의 코드를 수정하고 커밋 했다면 해당 커밋들은 직전의 커밋을 동시에 바라봄
- image.png
 
-3. 위와 같이 
+3. 특정 기준의 기존 커밋A를 기준으로 다른 작업을 동시에 할 수 있는 작업 = Branch
+ - 한 기준 커밋A에 동시에 수정본B, C 커밋 시 오류 발생
+ - 한 명이 먼저 수정본B의 커밋을 실행했다면 이미 업데이트가 되었기에, 기존의 커밋A로 수정한 수정본C는 수정본B의 내용이 포함되지 않음
+
+4. master branch는 가장 기본적인 branch의 종류
+ - master: 로컬 저장소
+ - origin/master: 원격 저장소 = Github
+ - 커밋A(master branch) -> 새 커밋 추가 -> 커밋A << 커밋B(master branch): 새로운 커밋 시 branch는 새로운 커밋을 바라봄
+ - branch는 단순하게 이전 커밋을 가르키는 포인터(pointer)
+ - 새로운 커밋을 만들 때 마다 branch는 새 커밋으로 옮겨감
+
+5. Branch와 Commit
+ - 커밋A(master branch)에 2nd branch 생성
+ - 커밋A(master branch, 2nd branch)를 2개의 branch가 바라봄
+ - 2nd branch에 commit 진행
+    > 커밋A(master branch) << 커밋B(2nd branch) 형태
+ - 커밋A(master branch)로 이동 후 commit 진행
+    > 커밋A << 커밋B(2nd branch)
+            << 커밋C(master branch)
+    > branch 간의 이동 시 HEAD라는 포인터를 이동시켜 현재 작업하는 branch 이동 가능
+    * branch = 커밋을 가르키는 포인터
+    ** HEAD = 현재 작업 중인 branch, 과거의 커밋을 가르키는 포인터
+ - master branch에서의 commit으로 인해 커밋A에 대한 2가지 버전으로 갈라짐
+    > 버전이 갈라지고 현재의 HEAD는 master branch를 가르키고 있음
+
+6. HEAD는 현재 작업 중인 branch, 과거의 커밋으로 모두 이동할 수 있음
+
+7. Branch 사용 규칙
+ - 생성되는 branch에 대해서는 규칙 설정 필수 -> commit 시 오류가 발생할 수 있기 때문
+    > 규칙 예제
+     1. master branch에는 직접적인 commit 금지: 작업 시 코드가 꼬일 수 있음
+     2. 기능 개발, 코드 수정 등은 master branch를 기준으로 새로운 branch 생성 이후 해당 branch에서 작업
+     3. 새로 만든 branch의 이름은 [feature/기능이름] 형식으로 하고 한 명만 commit
+     4. 해당 branch에서 작업이 모두 완료된 이후 master branch에 commit
+
+8. Sourcetree를 이용한 branch 작업
+ - History 메뉴의 상단에 '브랜치' 로 새로운 브랜치 생성
+ - 
