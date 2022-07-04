@@ -1,0 +1,16 @@
+<RNA-Seq>
+Transcriptome을 분석하여 발현의 차이를 확인하는 분석 방법
+ - Central Dogma에 입각한 계산 방법
+    > Central Dogma: Transcirpt -- translation --> Protein
+    > Transcirpt가 많을수록 발현량 증가
+        + Transcriptome: 전사체, 코딩 + 비코딩으로 이루어진 RNA 세트 ex)RNA, mRNA
+        + Translation: 번역, mRNA의 Codon을 통해 Amino Acids의 결합을 통해 protein을 만드는 과정
+        + Tanscription: 전사, DNA로 부터 mRNA를 복제하는 과정
+
+- RNA Sequencing의 기본 원리
+1. Sample에서 mRNA를 추출(Transcription)
+2. 라이브러리 생성을 위한 Adpator 부착
+ - mRNA fragment의 양 끝단에 부착
+ - mRNA로부터 cDNA 생성 후 부착(Reverse Transcription)
+        + Reverse Tanscription: 역전사, mRNA로부터 안정적인 cDNA로 역전사하는 과정
+        + cDNA: Complementary DNA, 
