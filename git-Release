@@ -1,0 +1,8 @@
+<Program Version>
+- tag
+ 1. 모든 수정 사항 및 변경 내용에 대한 merge 완료 후 commit 진행
+ 2. 프로그램의 출시 = Release
+ 3. tag를 통해 현재의 version 표시
+ 4. sourcetree 상에서 기입한 version 정보가 함께 표시된 것 확인 가능
+ 5. push 할 때, 모든 태그 푸시 체크 이후 push 진행
+ 6. tag가 붙는다면 Github에서 Release로 표시가 되는 것 확인 가능
