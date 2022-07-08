@@ -20,11 +20,50 @@
     > fork 저장소에서의 commit 이력을 확인하기 위해서는 해당 저장소의 주소를 등록
 
 - Branch VS. Fork
- | 유형   | 의의                                  | 편리한 점                                                               | 불편한 점                                            |
-|--------|---------------------------------------|-------------------------------------------------------------------------|------------------------------------------------------|
-| branch | 하나의 원본 저장소에서 분기를 나눔    | 하나의 원본저장소에서 코드 커밋 이력을 편하게 볼 수 있음                | 다수의 사용자가 다수의 브랜치를 만들면 관리가 어려움 |
-| Fork   | 여러 원격 저장소를 만들어 분기를 나눔 | 원본 저장소에 영향을 미치지 않아  원격 저장소에서 편하게 코드 수정 가능 | 원본 저장소의 이력 확인을 위해 따로 주소 등록 필요   |
-|        |                                       |                                                                         |                                                      |
+ 1. 의의
+    > Branch: 하나의 원본 저장소에서 분기를 나눔
+    > Fork: 여러 원격 저장소를 만들어 분기를 나눔
+ 2. 편리한 점
+    > Branch: 하나의 원본 저장소에서 코드 커밋 이력을 편하게 확인 가능
+    > Fork: 원본 저장소에 영향을 주지 않고 코드 수정 가능
+ 3. 불편한 점
+    > Branch: 다수의 사용자가 사용 시 다수의 Branch 생성으로 관리의 어려움
+    > Fork: 원본 저장소의 이력 확인을 위해 주소 추가 필요
+
 - 외부 사용자의 저장소 fork
- 1. 외부 사용자로 사용할 계정 생성
+ 1. 외부 사용자로 사용할 계정 생성: 기존 사용 중이던 Github 계정과 다른 이메일 주소 사용
+    > TIP. Gmail을 기존 사용 중이면 이메일에 + 를 사용하면 기존 Gmail로 모두 메일이 전송됨
+ 2. 새 계정 생성 후 해당 계정으로 기존의 Github Repository 접속
+    > user_name/Repo_name 입력
+    > 검색창 우측의 조건 중 All Github 확인 후 탐색
+ 3. 기존 사용 중이던 Github 접속 후 우측 상단의 Fork 클릭
+ 4. Fork 완료 시 Repository의 이름이 기존 Github의 Repository 이름으로 입력
+    > ex) 기존 Repo: user_name/repo_name | SUB Repo: sub_name/repo_name
+ 5. Fork된 Repository의 하단에는 forked from ~~ 이라는 문구 확인 가능
+    > Fork된 Repository의 소유자는 SUB 계정이 됨
+
+- 로컬 저장소와 Fork 저장소 연결
+ 1. Fork 저장소를 로컬 저장소와 연결하기 위해 Sourcetree에서 Clone 생성
+ 2. Clone을 생성하면 기존의 commit 내용 및 merge 이력도 함께 확인 가능
+ 3. sub 계정으로 Clone 추가 후 Sourcetree에 sub 계정으로 로그인 시도
+    > 현재 Sourcetree에 로그인 되어있는 계정은 기존 사용 중인 계정으로 commit & push를 하면 오류 발생
+ 4. sub 계정 추가
+    > Sourcetree -> 도구 -> 옵션 -> 인증
+    > 우측 상단의 추가
+    > 호스팅 서비스: Github / 선호 프로토콜: HTTPS / 인증: Basic / 사용자명: sub 계정의 user_name
+    > 설정 이후 비밀번호 새로고침을 통해 인증 진행
+        + Basic 인증이 실패할 경우 기존 로그인 된 계정의 로그아웃 후 OAuth 방식으로 인증 진행
+    > 각 계정을 클릭하여 확장 후 설정 초기화를 진행하여 Default Account를 sub 계정으로 설정
+        + sub 계정 추가 후 기존 계정, sub 계정 모두 Default Account 설정이 '아니오'로 설정되어 있음
+        + 기존 계정을 다시 Default Account로 사용하고 싶다면 기존 계정의 설정 초기화 진행
+ 5. sub 계정의 원격 저장소에서의 commit 진행을 위해 VScode를 사용해 파일 생성 후 저장
+   > VScode 실행 후 파일 -> 작업 영역에 폴더 추가 -> sub 계정의 원격 저장소와 연결된 폴더 선택
+ 6. Sourcetree를 실행하여 sub 계정과 연결된 로컬 저장소의 탭을 실행하고 commit 진행
+ 7. commit 진행 시 하단에 보이는 계정이 기존 계정이라면 프로필 사진을 클릭하여 대체 작성자 정보를 사용해 sub 계정으로 변경
+   > 변경 후 user_name 옆에 이메일이 보이지 않는다면 다시 진행
+ 8. 변경 후 commit & push 진행
+ 9. push 이후 sub 계정의 Repo와 기존 계정의 Repo를 확인하면 직전 커밋 부분에 대해 차이 확인 가능
+
+- Pull request to Original Repo
+ 1. Sub 계정의 Repo에서 push를 완료했다면 해당 내용을 원본 저장소로 pull request 진행
  2. 
