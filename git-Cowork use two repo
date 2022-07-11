@@ -66,4 +66,23 @@
 
 - Pull request to Original Repo
  1. Sub 계정의 Repo에서 push를 완료했다면 해당 내용을 원본 저장소로 pull request 진행
- 2. 
+   > Pull request 전 확인 사항
+      + HEAD Repository: Fork Repo
+      + Base Repository: 원본 저장소 
+ 2. Able to merge 메시지가 보인다면 충돌 없이 원본 저장소로 병합이 가능
+ 3. Create Pull request 버튼을 누르고 메시지를 적은 후 진행
+ 4. request 이후 no conflict 확인
+ 5. 원본 저장소에서 해당 커밋에 대한 승인 및 병합 진행
+   > Insight 메뉴에서 fork repo가 생겼다는 것 확인 가능
+   > Pull Request 메뉴를 통해 fork repo에서 보낸 내용 확인
+      + 내용을 클릭하여 어떠한 내용이 추가되었는지 확인
+      + 상단의 Files changed를 확인하여 변경 부분 및 추가 부분 확인 가능
+      + 각 라인에 커서를 대면 + 아이콘이 뜨며 해당 부분에 대한 Comment 가능
+   > 내용 확인 및 Feedback 완료 후 내용 확인 창의 우측에 Review changes를 통해 여러 동작 가능
+      + comment: 댓글만 달고 병합하지 않음
+      + Approve: 댓글과 함께 병합 진행
+      + Request changes: 코드에 대한 추가 수정 요청
+      + 원하는 동작 선택 후 Submit review를 통해 작업 수행
+   > 승인 이후 Merge pull request -> Confirm merge를 클릭하여 병합 진행
+ 6. 모든 과정이 완료되고 Insight -> Contributors를 확인하면 누가 Fork repo에서 pull request를 얼마나 보냈는 지 확인 가능
+
