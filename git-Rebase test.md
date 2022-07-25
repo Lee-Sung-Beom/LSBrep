@@ -13,8 +13,8 @@
         > Rebase-test 폴더 생성 후 "Git Base"를 통해 다음의 명령어 진행
         ```sh
         $ git init
-        $ git config --global user.name <Github name>
-        $ git config --global user.email <Github email>
+        $ git config --global user.name "Github name"
+        $ git config --global user.email "Github email"
         ```
     2. Rebase-test 연결 후 VScode를 사용하여 파일 생성 후 커밋 진행
         > File 이름 = Rebase test 1  
