@@ -62,4 +62,9 @@
         1. SourceTree 실행 후 "Add"를 통해 추가  
         2. "탐색"으로 Rebase-test의 로컬 저장소 선택  
         ```
+<br>
+
+- SourceTree에서의 커밋과 푸시  
+
+    1. Rebase test 2 파일 생성  
     
